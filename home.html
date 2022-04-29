@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;400&display=swap");
+      html {
+        height: 100%;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background: -webkit-radial-gradient(#d2ffdd, #64c4b5);
+        background: -moz-radial-gradient(#d2ffdd, #64c4b5);
+        background: -ms-radial-gradient(#d2ffdd, #64c4b5);
+        background: -o-radial-gradient(#d2ffdd, #64c4b5);
+        background: radial-gradient(#d2ffdd, #64c4b5);
+        font-family: "Raleway", sans-serif;
+      }
+      .container {
+        margin-top: 2.5rem;
+      }
+      .header {
+        color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      .header__one {
+        font-size: 1.5rem;
+        font-weight: 200;
+        letter-spacing: 0.75rem;
+        margin-bottom: 2rem;
+      }
+      .header__two {
+        font-size: 5rem;
+        font-weight: 300;
+        letter-spacing: 1rem;
+      }
+      .tetris {
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        justify-content: space-around;
+      }
+      .content {
+        margin-top: 4rem;
+      }
+      .tetris__options{
+          display: flex;
+          flex-direction: column;
+          gap: 2rem;
+          align-items: center;
+      }
+      .tetris-score {
+        color: grey;
+        display: flex;
+        flex-direction: column;
+        height: 13rem;
+        width: 9rem;
+        background-color: white;
+        border-radius: 0.5rem;
+        padding: 1.5rem 1rem;
+        align-items: center;
+        gap: 1.5rem;
+        -webkit-box-shadow: inset 0px 4px 15px -9px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: inset 0px 4px 15px -9px rgba(0, 0, 0, 0.75);
+        box-shadow: inset 0px 4px 15px -9px rgba(0, 0, 0, 0.75);
+      }
+      .tetris__score__header {
+        font-size: 1.25rem;
+      }
+      .tetris__score__value {
+        font-size: 2.5rem;
+      }
+      .tetris__score__piece {
+        font-size: 1.25rem;
+      }
+      .tetris__score__line {
+        font-size: 1.25rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="header">
+        <div class="header__one">WELCOME TO</div>
+        <div class="header__two">TETRIS</div>
+      </div>
+      <div class="content">
+        <div class="tetris">
+          <div class="tetris-window">Tetris game will be displayed here</div>
+          <div class="tetris__options">
+            <div class="tetris-score">
+              <div class="tetris__score__header">SCORE</div>
+              <div class="tetris__score__value">30</div>
+              <div class="tetris__next__piece">Next piece</div>
+              <div class="tetris__next__line">LINES: 3</div>
+            </div>
+            <div class="tetris__button">
+              <button>START/PAUSE</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
