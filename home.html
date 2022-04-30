@@ -4,6 +4,8 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+    <script src="app.js"></script>
     <title>Home</title>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;400&display=swap");
@@ -14,11 +16,11 @@
         -o-background-size: cover;
         background-size: cover;
         background-repeat: no-repeat;
-        background: -webkit-radial-gradient(#d2ffdd, #64c4b5);
-        background: -moz-radial-gradient(#d2ffdd, #64c4b5);
-        background: -ms-radial-gradient(#d2ffdd, #64c4b5);
-        background: -o-radial-gradient(#d2ffdd, #64c4b5);
-        background: radial-gradient(#d2ffdd, #64c4b5);
+        background: -webkit-radial-gradient(#fad961, #f76b1c);
+        background: -moz-radial-gradient(#fad961, #f76b1c);
+        background: -ms-radial-gradient(#fad961, #f76b1c);
+        background: -o-radial-gradient(#fad961, #f76b1c);
+        background: radial-gradient(#fad961, #f76b1c);
         font-family: "Raleway", sans-serif;
       }
       .container {
@@ -38,7 +40,7 @@
       }
       .header__two {
         font-size: 5rem;
-        font-weight: 300;
+        font-weight: 400;
         letter-spacing: 1rem;
       }
       .tetris {
@@ -50,12 +52,14 @@
       .content {
         margin-top: 4rem;
       }
-      .tetris__options{
-          display: flex;
-          flex-direction: column;
-          gap: 2rem;
-          align-items: center;
+      .tetris__options {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
       }
+
+      /* score window */
       .tetris-score {
         color: grey;
         display: flex;
@@ -83,6 +87,67 @@
       .tetris__score__line {
         font-size: 1.25rem;
       }
+
+      /* button */
+      .button-19 {
+        appearance: button;
+        background-color: #1899d6;
+        border: solid transparent;
+        border-radius: 16px;
+        border-width: 0 0 4px;
+        box-sizing: border-box;
+        color: #ffffff;
+        cursor: pointer;
+        display: inline-block;
+        font-family: din-round, sans-serif;
+        font-size: 15px;
+        font-weight: 700;
+        letter-spacing: 0.8px;
+        line-height: 20px;
+        margin: 0;
+        outline: none;
+        overflow: visible;
+        padding: 13px 16px;
+        text-align: center;
+        text-transform: uppercase;
+        touch-action: manipulation;
+        transform: translateZ(0);
+        transition: filter 0.02s;
+        user-select: none;
+        -webkit-user-select: none;
+        vertical-align: middle;
+        white-space: nowrap;
+        width: 100%;
+      }
+
+      .button-19:after {
+        background-clip: padding-box;
+        background-color: #1cb0f6;
+        border: solid transparent;
+        border-radius: 16px;
+        border-width: 0 0 4px;
+        bottom: -4px;
+        content: "";
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        z-index: -1;
+      }
+
+      .button-19:main,
+      .button-19:focus {
+        user-select: auto;
+      }
+
+      .button-19:hover:not(:disabled) {
+        filter: brightness(1.1);
+        -webkit-filter: brightness(1.1);
+      }
+
+      .button-19:disabled {
+        cursor: auto;
+      }
     </style>
   </head>
   <body>
@@ -102,7 +167,7 @@
               <div class="tetris__next__line">LINES: 3</div>
             </div>
             <div class="tetris__button">
-              <button>START/PAUSE</button>
+              <button class="button-19" role="button">START/PAUSE</button>
             </div>
           </div>
         </div>
