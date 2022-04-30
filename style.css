@@ -42,8 +42,8 @@ html {
 .tetris {
     display: flex;
     flex-direction: row;
-    gap: 2rem;
-    justify-content: space-around;
+    gap: 4rem;
+    justify-content: center;
 }
 
 .content {
@@ -91,7 +91,7 @@ html {
 }
 
 /* button */
-.button-19 {
+.tetris__button__start {
     appearance: button;
     background-color: #1899d6;
     border: solid transparent;
@@ -122,7 +122,7 @@ html {
     width: 100%;
 }
 
-.button-19:after {
+.tetris__button__start:after {
     background-clip: padding-box;
     background-color: #1cb0f6;
     border: solid transparent;
@@ -137,16 +137,30 @@ html {
     z-index: -1;
 }
 
-.button-19:main,
-.button-19:focus {
+.tetris__button__start:main,
+.tetris__button__start:focus {
     user-select: auto;
 }
 
-.button-19:hover:not(:disabled) {
+.tetris__button__start:hover:not(:disabled) {
     filter: brightness(1.1);
     -webkit-filter: brightness(1.1);
 }
 
-.button-19:disabled {
+.tetris__button__start:disabled {
     cursor: auto;
+}
+
+.grid {
+    width: 300px;
+    height: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: yellow;
+}
+
+.grid div {
+    height: 30px;
+    width: 30px;
+    background-color: red;
 }
