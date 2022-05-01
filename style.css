@@ -162,5 +162,14 @@ html {
 .grid div {
     height: 30px;
     width: 30px;
-    background-color: red;
+}
+
+.tetromino {
+    /* background: #00ffff;
+    border: 5px solid #00ffff;
+    border-top-color: #b3ffff;
+    border-left-color: #00cccc;
+    border-right-color: #00cccc;
+    border-bottom-color: #004d4d; */
+    background-color: blue;
 }
