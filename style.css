@@ -156,7 +156,7 @@ html {
     height: 600px;
     display: flex;
     flex-wrap: wrap;
-    background-color: yellow;
+    background-color: white;
 }
 
 .grid div {

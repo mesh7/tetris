@@ -55,8 +55,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //randomly select the tetromino and its first rotation
   let random = Math.floor(Math.random() * theTetrominoes.length);
-  let current = theTetrominoes[1][1];
-  console.log(random);
+  let current = theTetrominoes[random][currentRotation];
 
   //draw the tetromino
   function draw() {
@@ -100,5 +99,24 @@ document.addEventListener("DOMContentLoaded", () => {
       currentPosition = 4;
       draw();
     }
+  }
+
+  //move tetromino left, right, unless there's blockage
+  function moveLeft() {
+    undraw();
+    const isAtLeftEdge = current.some(
+      (index) => (currentPosition + index) % width === 0
+    );
+    if (!isAtLeftEdge) {
+      currentPosition -= 1;
+    }
+    if (
+      cuurent.some(
+        (index) => squares[currentPosition + index].classList.contains["taken"]
+      )
+    ) {
+      currentPosition += 1;
+    }
+    draw();
   }
 });
