@@ -1,9 +1,14 @@
 document.addEventListener("DOMContentLoaded", () => {
   const scoreDisplay = document.querySelector("#score");
   const startButton = document.querySelector("#start-button");
+  const increaseButton = document.querySelector("#increase-button");
+  const decreaseButton = document.querySelector("#decrease-button");
+
   const grid = document.querySelector(".grid");
   let squares = Array.from(document.querySelectorAll(".grid div"));
   const width = 10;
+  let nextRandom = 0;
+  let timerId;
 
   //Tetrominoes
   //L/Z/T/O/I
@@ -72,7 +77,10 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   //move the tetromino move
-  timerId = setInterval(moveDown, 500);
+  //   timerId = setInterval(moveDown, 1000);
+//   function intervalChange(value) {
+    
+//   }
 
   //function to catch keypress events
   function keyControl(e) {
@@ -110,10 +118,12 @@ document.addEventListener("DOMContentLoaded", () => {
       );
 
       //start random tatromino
-      random = Math.floor(Math.random() * theTetrominoes.length);
+      random = nextRandom;
+      nextRandom = Math.floor(Math.random() * theTetrominoes.length);
       current = theTetrominoes[random][currentRotation];
       currentPosition = 4;
       draw();
+      displayShape();
     }
   }
 
@@ -165,4 +175,41 @@ document.addEventListener("DOMContentLoaded", () => {
     current = theTetrominoes[random][currentRotation];
     draw();
   }
+
+  //show up-next tetromino
+  const displaySqaures = document.querySelectorAll(".mini-grid div");
+  const displayWidth = 4;
+  let displayIndex = 0;
+
+  //the tetromino without rotations
+  const upNextTetrominoes = [
+    [1, displayWidth + 1, displayWidth * 2 + 1, 2],
+    [0, displayWidth, displayWidth + 1, displayWidth * 2 + 1],
+    [1, displayWidth, displayWidth + 1, displayWidth + 2],
+    [0, 1, displayWidth, displayWidth + 1],
+    [1, displayWidth + 1, displayWidth * 2 + 1, displayWidth * 3 + 1],
+  ];
+
+  //display the shape in the mini-grid
+  function displayShape() {
+    displaySqaures.forEach((square) => {
+      square.classList.remove("tetromino");
+    });
+    upNextTetrominoes[nextRandom].forEach((index) => {
+      displaySqaures[displayIndex + index].classList.add("tetromino");
+    });
+  }
+
+  //start and pause the game
+  startButton.addEventListener("click", () => {
+    if (timerId) {
+      clearInterval(timerId);
+      timerId = null;
+    } else {
+      draw();
+      timerId = setInterval(moveDown, 1000);
+      nextRandom = Math.floor(Math.random() * theTetrominoes.length);
+      displayShape();
+    }
+  });
 });

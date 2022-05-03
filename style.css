@@ -62,7 +62,7 @@ html {
     color: grey;
     display: flex;
     flex-direction: column;
-    height: 13rem;
+    height: 17rem;
     width: 9rem;
     background-color: white;
     border-radius: 0.5rem;
@@ -152,8 +152,8 @@ html {
 }
 
 .grid {
-    width: 300px;
     height: 600px;
+    width: 300px;
     display: flex;
     flex-wrap: wrap;
     background-color: white;
@@ -165,11 +165,24 @@ html {
 }
 
 .tetromino {
-    /* background: #00ffff;
-    border: 5px solid #00ffff;
+    /* background: #00ffff; */
+    /* border: solid #00ffff;
     border-top-color: #b3ffff;
     border-left-color: #00cccc;
     border-right-color: #00cccc;
     border-bottom-color: #004d4d; */
     background-color: blue;
+}
+
+.mini-grid {
+    height: 120px;
+    width: 120px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: yellow;
+}
+
+.mini-grid div {
+    height: 30px;
+    width: 30px;
 }
