@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let nextRandom = 0;
   let timerId;
   let score = 0;
+  let gameEnded = false;
 
   //Tetrominoes
   //L/Z/T/O/I
@@ -77,22 +78,18 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  //move the tetromino move
-  //   timerId = setInterval(moveDown, 1000);
-  //   function intervalChange(value) {
-
-  //   }
-
   //function to catch keypress events
   function keyControl(e) {
-    if (e.keyCode === 37) {
-      moveLeft();
-    } else if (e.keyCode === 38) {
-      rotate();
-    } else if (e.keyCode === 39) {
-      moveRight();
-    } else if (e.keyCode === 40) {
-      moveDown();
+    if (!gameEnded) {
+      if (e.keyCode === 37) {
+        moveLeft();
+      } else if (e.keyCode === 38) {
+        rotate();
+      } else if (e.keyCode === 39) {
+        moveRight();
+      } else if (e.keyCode === 40) {
+        moveDown();
+      }
     }
   }
 
@@ -125,6 +122,7 @@ document.addEventListener("DOMContentLoaded", () => {
       draw();
       displayShape();
       addScore();
+      gameOver();
     }
   }
 
@@ -168,12 +166,21 @@ document.addEventListener("DOMContentLoaded", () => {
 
   //rotate tetromino
   function rotate() {
-    undraw();
-    currentRotation++;
-    if (currentRotation === current.length) {
-      currentRotation = 0;
+    const isAtLeftEdge = current.some(
+      (index) => (currentPosition + index) % width === 0
+    );
+    const isAtRightEdge = current.some(
+      (index) => (currentPosition + index) % width === width - 1
+    );
+    console.log(isAtRightEdge);
+    if (!isAtLeftEdge || !isAtRightEdge) {
+      undraw();
+      currentRotation++;
+      if (currentRotation === current.length) {
+        currentRotation = 0;
+      }
+      current = theTetrominoes[random][currentRotation];
     }
-    current = theTetrominoes[random][currentRotation];
     draw();
   }
 
@@ -239,8 +246,21 @@ document.addEventListener("DOMContentLoaded", () => {
         });
         const sqauresRemoved = squares.splice(i, width);
         squares = sqauresRemoved.concat(squares);
-        squares.forEach(cell => grid.appendChild(cell));
+        squares.forEach((cell) => grid.appendChild(cell));
       }
+    }
+  }
+
+  function gameOver() {
+    if (
+      current.some((index) =>
+        squares[currentPosition + index].classList.contains("taken")
+      )
+    ) {
+      scoreDisplay.innerHTML = "END";
+      clearInterval(timerId);
+      //setting boolean to true and using it as validation to stop the keyup functionality
+      gameEnded = true;
     }
   }
 });
