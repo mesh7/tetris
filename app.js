@@ -10,7 +10,14 @@ document.addEventListener("DOMContentLoaded", () => {
   let nextRandom = 0;
   let timerId;
   let score = 0;
-  let gameEnded = false;
+  // let gameEnded = false;
+  const colors = [
+    'red',
+    'purple',
+    'green',
+    'blue',
+    'yellow'
+  ]
 
   //Tetrominoes
   //L/Z/T/O/I
@@ -68,6 +75,7 @@ document.addEventListener("DOMContentLoaded", () => {
   function draw() {
     current.forEach((index) => {
       squares[currentPosition + index].classList.add("tetromino");
+      squares[currentPosition + index].style.backgroundColor = colors[random];
     });
   }
 
@@ -75,12 +83,13 @@ document.addEventListener("DOMContentLoaded", () => {
   function undraw() {
     current.forEach((index) => {
       squares[currentPosition + index].classList.remove("tetromino");
+      squares[currentPosition + index].style.backgroundColor = '';
     });
   }
 
   //function to catch keypress events
   function keyControl(e) {
-    if (!gameEnded) {
+    // if (!gameEnded) {
       if (e.keyCode === 37) {
         moveLeft();
       } else if (e.keyCode === 38) {
@@ -90,7 +99,7 @@ document.addEventListener("DOMContentLoaded", () => {
       } else if (e.keyCode === 40) {
         moveDown();
       }
-    }
+    // }
   }
 
   document.addEventListener("keyup", keyControl);
@@ -202,9 +211,11 @@ document.addEventListener("DOMContentLoaded", () => {
   function displayShape() {
     displaySqaures.forEach((square) => {
       square.classList.remove("tetromino");
+      square.style.backgroundColor = '';
     });
     upNextTetrominoes[nextRandom].forEach((index) => {
       displaySqaures[displayIndex + index].classList.add("tetromino");
+      displaySqaures[displayIndex + index].style.backgroundColor = colors[nextRandom];
     });
   }
 
@@ -243,6 +254,7 @@ document.addEventListener("DOMContentLoaded", () => {
         row.forEach((index) => {
           squares[index].classList.remove("taken");
           squares[index].classList.remove("tetromino");
+          sqaures[index].style.backgroundColor = '';
         });
         const sqauresRemoved = squares.splice(i, width);
         squares = sqauresRemoved.concat(squares);
@@ -260,7 +272,7 @@ document.addEventListener("DOMContentLoaded", () => {
       scoreDisplay.innerHTML = "END";
       clearInterval(timerId);
       //setting boolean to true and using it as validation to stop the keyup functionality
-      gameEnded = true;
+      // gameEnded = true;
     }
   }
 });
