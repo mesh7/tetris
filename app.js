@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   let nextRandom = 0;
   let timerId;
   let score = 0;
+  let timerInterval = 1000;
   // let gameEnded = false;
   const colors = [
     'red',
@@ -226,11 +227,29 @@ document.addEventListener("DOMContentLoaded", () => {
       timerId = null;
     } else {
       draw();
-      timerId = setInterval(moveDown, 1000);
+      timerId = setInterval(moveDown, timerInterval);
       nextRandom = Math.floor(Math.random() * theTetrominoes.length);
       displayShape();
     }
   });
+
+  increaseButton.addEventListener("click", () => {
+    if (timerInterval) {
+      timerInterval = timerInterval + 100;
+      startButton.click()
+    }
+    console.log(timerInterval)
+  });
+
+  decreaseButton.addEventListener("click", () => {
+    if (timerInterval) {
+      timerInterval = timerInterval - 100;
+      startButton.click()
+    }
+    console.log(timerInterval)
+  });
+
+  console.log(timerInterval)
 
   //add score
   function addScore() {
@@ -254,7 +273,7 @@ document.addEventListener("DOMContentLoaded", () => {
         row.forEach((index) => {
           squares[index].classList.remove("taken");
           squares[index].classList.remove("tetromino");
-          sqaures[index].style.backgroundColor = '';
+          squares[index].style.backgroundColor = '';
         });
         const sqauresRemoved = squares.splice(i, width);
         squares = sqauresRemoved.concat(squares);
